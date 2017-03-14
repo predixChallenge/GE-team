@@ -64,6 +64,7 @@ body {
         /* Control the level here*/
         display: flex;
         flex-direction: column;
+        transition: all 0.3s ease-in-out;
     }
     .level .rest {
         width: 100%;
