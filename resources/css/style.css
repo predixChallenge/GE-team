@@ -105,7 +105,7 @@ body {
         /*background-color: greenyellow;*/
     }
     .pumpstatus .circle {
-        background-color: lawngreen;
+        background-color: orange;
     }
     .data_center {
         width: 100%;
@@ -200,5 +200,10 @@ body {
     .chip .circle:hover {
         transform: scale(1.2);
         cursor: pointer;
+    }
+    /*Animation*/
+    .flow {
+        -webkit-animation-duration: 3s !important;
+        animation-duration: 3s !important;
     }
 }

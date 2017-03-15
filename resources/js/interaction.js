@@ -7,16 +7,11 @@ $(document).ready(function() {
     var pumpStat = 1;
     var waterVolume = 0;
     var signedInStatus = false;
-    var tankName;
-
-    /*Setting the name of the tank*/
-    tankname = $("#tName");
-
-    tankname.text("Default Tank Name");
+    var tank_Name = "Default Tank Name";
 
 
-    /*Setting the liter*/
-    $(".tankLitres p").text(waterVolume + " L");
+
+
 
 
     /*Water level bar*/
@@ -36,20 +31,6 @@ $(document).ready(function() {
 
     }, 100);
 
-    /*Pump status*/
-    pumpStatusDisp = $(".pumpstatus .name span");
-    if (pumpStat == 0) {
-        $(".pumpstatus .circle").css("background-color", "red");
-        pumpStatusDisp.text() == "Off";
-    }
-    if (pumpStat == 1) {
-        $(".pumpstatus .circle").css("background-color", "lawngreen");
-        pumpStatusDisp.text() == "On";
-    }
-    /*if (pumpStat != 1 || pumpStat != 0) {
-        $(".pumpstatus .circle").css("background-color", "orange");
-        pumpStatusDisp.text("Error");
-    }*/
 
     /*Check to see if user has signed in*/
     var useElem = $(".user ");
@@ -68,9 +49,45 @@ $(document).ready(function() {
 
 
                 waterLevel1 = dat.tankPercentage;
+                pumpStat = dat.pumpStatus;
+                waterVolume = dat.tankVolume;
+                tank_Name = dat.tankName;
 
 
-                /*   alert(dat.pumpStat, dat.tankname);*/
+                /*Setting the name of the tank*/
+                $("#tName").text(tank_Name);
+
+                /*Pump status*/
+                /*Condition to check low level of water*/
+                if (waterLevel1 < 20) /*If water level is less than 20%,*/
+                    pumpStat = 1; /*turn off pump*/
+
+                else pumpStat = 0; /*or tyrn it on*/
+
+
+                pumpStatusDisp = $(".pumpstatus .name span");
+                if (pumpStat == 0) {
+                    $(".pumpstatus .circle").css("background-color", "red");
+                    pumpStatusDisp.text("Off");
+                }
+                if (pumpStat == 1) {
+                    $(".pumpstatus .circle").css("background-color", "lawngreen");
+                    pumpStatusDisp.text("On");
+                }
+                if (pumpStat > 1 || pumpStat < 0) {
+                    $(".pumpstatus .circle").css("background-color", "orange");
+                    pumpStatusDisp.text("Error");
+                }
+
+                /*Setting the liter*/
+                $(".tankLitres p").text(waterVolume + " L");
+
+
+
+
+
+
+
 
 
 

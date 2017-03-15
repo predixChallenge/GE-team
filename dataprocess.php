@@ -2,10 +2,10 @@
 
 $dbConnection = $query = $lastID ="";
 function connectToDB(){
-define("HOST", "localhost");
-define("USERNAME", "id1067563_ge");
-define("PASSWORD", "powerful");
-define("DB", "id1067563_ge_predix");
+define("HOST", "127.0.0.1:3307");
+define("USERNAME", "root");
+define("PASSWORD", "");
+define("DB", "ge");
 
 global $dbConnection;
 $dbConnection = new mysqli(HOST, USERNAME, PASSWORD, DB);
@@ -62,7 +62,7 @@ function getTankDetails(){
         'tankPercentage' => $tankDeets["tank_Percentage"],
         'tankVolume' => $tankDeets["tank_Volume"],
         'tankName' => $tankDeets["tank_Name"],
-        'pumpStat' => $tankDeets["tank_PumpState"]
+        'pumpStatus' => $tankDeets["tank_PumpState"]
 
     );
 
